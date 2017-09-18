@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <title>Hola Mundo</title>
+        <meta name="description" content="Curso de AngularJS"
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="../lib/angular.js"></script>
+    </head>
+    <body ng-app ng-init="userName='Pepe';curso='AngularJS'">
+        <form>
+            <p>
+                <label for="inputName">Nombre</label>
+                <input id='inputName' type="text" ng-model="userName"> </input>
+            </p>
+            <p>
+                <button ng-click="userName=''">Borrar</button>
+            </p>
+        </form>
+        <p>Bienvenido al cuarso de {{curso}}</p>
+        <p>Hola {{userName}}</p>
+    </body>
+</html>
