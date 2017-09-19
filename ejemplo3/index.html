@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <title>Hola Mundo</title>
+        <meta name="description" content="Curso de AngularJS ACUMULADOR"
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="../node_modules/angular/angular.js"></script>
+        <script src="../ejemplo3/js/app.js"></script>
+        <script src="../ejemplo3/js/acumulador.controller.js"></script>
+    </head>
+    <body  ng-app="appMain" ng-controller="acumulador.controller as $ctrl">
+        <form>
+            <p><H1>Acumulador</H1></p>
+            <p><H3>Control de operaciones</H3></p>
+            <p>
+                <label for="inputName">Incremento</label>
+                <input id='inputName' type="text" ng-model="$ctrl.cuenta"> </input>
+                <p>
+                    <button ng-click="vm.sumar()">+</button>
+                </p>
+                <p>
+                    <button ng-click="vm.restar()">-</button>
+                </p>
+            </p>
+            <p><H2>Control de operaciones</H2>{{$ctrl.total}}</p>
+        </form>
+    </body>
+</html>
