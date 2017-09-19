@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <title>Hola Mundo</title>
+        <meta name="description" content="Curso de AngularJS ACUMULADOR"
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="../node_modules/angular/angular.js"></script>
+        <script src="../ejemplo4Pensamientos/js/app.js"></script>
+        <script src="../ejemplo4Pensamientos/js/pensamiento.controller.js"></script>
+    </head>
+    <body  ng-app="appMain" ng-controller="pensamiento.controller as $ctrl">
+        <form>
+            <p><H1>Pensamientos</H1></p>
+            <p>
+                <label for="inputName">Ingrese Pensamiento</label>
+                <input id='inputName' type="text" ng-model="$ctrl.texto"> </input>
+                <p>
+                    <button ng-click="$ctrl.aniadir()">Añadir Pensamiento</button>
+                </p>
+            </p>
+            <p><H2>Pensamientos que has tenido </H2>
+                <h3 ng-repeat="texto1 in $ctrl.atexto track by $index">
+                    Tu pensamiento numero {{$index+1}} es {{texto1}} </h3>
+            </p>
+        </form>
+    </body>
+    <ng-include src="'../commons/pie.html'"></ng-include>
+</html>

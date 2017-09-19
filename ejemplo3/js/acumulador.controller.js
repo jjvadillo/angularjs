@@ -8,7 +8,7 @@ function AppController() {
     };
     this.curso ='AngularJS';
 
-    this.borrar = function () {
+    this.sumar = function () {
         this.user.name='';
         console.dir(this);
     }
