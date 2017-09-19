@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <title>Hola Mundo AppController</title>
+        <meta name="description" content="Curso de AngularJS"
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="../node_modules/angular/angular.js"></script>
+        <script src="./app.js"></script>
+        <script src="./appController.js"></script>
+    </head>
+    <body ng-app="appMain" ng-controller="AppController as vm">
+        <form>
+            <p>
+                <label for="inputName">Nombre</label>
+                <input id='inputName' type="text" ng-model="vm.user.name"> </input>
+            </p>
+            <p>
+                <button ng-click="vm.borrar()">Borrar</button>
+            </p>
+        </form>
+        <p>Bienvenido al cuarso de {{vm.curso}}</p>
+        <p>Hola {{vm.user.name}}</p>
+    </body>
+</html>
