@@ -1,0 +1,57 @@
+<h1>Personas</h1>
+<div ng-controller="personasCntr as vm">
+	<div ng-show="vm.modo == 'list'">
+		<input type="button" value="Añadir" ng-click="vm.add()" >
+		<ul>
+			<li ng-repeat="p in vm.listado | orderBy:'nombre' ">
+				{{p.nombre | capitalice}} {{p.apellidos  | capitalice}}
+				<input type="button" value="Editar" ng-click="vm.edit(p.id)" >
+				<input type="button" value="Borrar" ng-click="vm.remove(p.id)" >
+			</li>
+		</ul>
+	</div>
+
+	<div ng-hide="vm.modo == 'list'">
+		<form name="miForm">
+			<p>
+			Código: 
+			<input type="number" name="id" ng-model="vm.elementoActual.id" 
+				ng-if="vm.modo == 'add'" required="required" min="1">
+			<span class="errorMsg" 
+				ng-show="miForm.id.$error.required && miForm.$dirty" >Es obligatorio</span>
+			<span class="errorMsg" 
+				ng-show="miForm.id.$error.min" >No puede ser negativo</span>
+			<span ng-bind="vm.elementoActual.id" ng-if="vm.modo != 'add'"></span>
+			<br>
+			Nombre:
+			<input type="text" name="nombre" ng-model="vm.elementoActual.nombre" 
+				required="required" ng-maxlength="10">
+			<span class="errorMsg" 
+				ng-show="miForm.nombre.$error.required || miForm.nombre.$error.maxlength" >
+				Es obligatorio con un máximo de 10 caracteres.</span>
+			<br>
+			Apellidos:
+			<input type="text" name="apellidos" ng-model="vm.elementoActual.apellidos" 
+				ng-maxlength="10">
+			<span class="errorMsg" 
+				ng-show="miForm.apellidos.$error.maxlength" >
+				El máximo de caracteres es 10.</span>
+			<br>
+			Edad:
+			<input type="number" name="edad" ng-model="vm.elementoActual.edad" 
+				min="18" max="67">
+			<span class="errorMsg" 
+				ng-show="miForm.edad.$error.min || miForm.edad.$error.max" >
+				La edad debe estar entre 18 y 67 años.</span>
+			</p>
+			<p>
+				<input type="button" value="Enviar" 
+					ng-disabled="miForm.$invalid" ng-click="vm.send()" >
+				<input type="button" value="Volver" ng-click="vm.cancel()" >
+			</p>
+		</form>
+
+
+	</div>
+
+</div>

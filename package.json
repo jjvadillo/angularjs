@@ -23,6 +23,9 @@
   "homepage": "https://github.com/jjvadillo/angularjs#readme",
   "dependencies": {
     "angular": "^1.6.6",
+    "angular-i18n": "^1.6.6",
+    "angular-locale": "^0.3.1",
+    "angular-sanitize": "^1.6.6",
     "bootstrap": "^3.3.7"
   }
 }

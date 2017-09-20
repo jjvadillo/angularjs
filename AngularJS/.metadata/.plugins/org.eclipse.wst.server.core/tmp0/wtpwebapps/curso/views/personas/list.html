@@ -1,0 +1,13 @@
+<h1>Personas</h1>
+<div>
+	<a href="#/personas/add">Añadir</a>
+	<ul>
+		<li ng-repeat="p in vm.listado | orderBy:'nombre' ">
+			<a ng-href="#/personas/{{p.id}}/{{p.nombre | lowercase}}_{{p.apellidos  | lowercase}}">
+			{{p.nombre | capitalice}} {{p.apellidos  | capitalice}}
+			</a>
+			<a ng-href="#/personas/{{p.id}}/edit">Editar</a>
+			<a href="" ng-click="vm.remove(p.id)">Borrar</a>
+		</li>
+	</ul>
+</div>

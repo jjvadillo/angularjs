@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <title>Hola Mundo</title>
+        <meta name="description" content="Curso de AngularJS ACUMULADOR"
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="../node_modules/angular/angular.js"></script>
+        <script src="../ejemplo5/js/app.js"></script>
+        <script src="../ejemplo5/js/pensamiento.controller.js"></script>
+    </head>
+    <body  ng-app="appMain" ng-controller="pensamiento.controller as $ctrl">
+        <form>
+            <p><H1>Pensamientos</H1></p>
+            <p>
+                <select ng-model="$ctrl.miProvinciaSeleccionada" 
+                    ng-options="provincia as provincia.nombre for provincia in $ctrl.provincias track by provincia.idProvincia" >
+                    <option value="">--Elige opcion--</option>
+                </select>
+            </p>
+            <p><H2>Provincia Seleccionada</H2>
+                <h3>{{$ctrl.miProvinciaSeleccionada.nombre}} </h3>
+            </p>
+        </form>
+    </body>
+    <ng-include src="'../commons/pie.html'"></ng-include>
+</html>

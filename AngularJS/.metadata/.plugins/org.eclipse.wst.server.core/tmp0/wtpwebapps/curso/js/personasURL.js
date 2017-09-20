@@ -1,0 +1,107 @@
+angular.module('miApp').controller("personasURL", [
+	'personasDAO', '$window', '$log',  '$routeParams', '$location', 
+	function(dao, $window, $log, $routeParams, $location ){
+	var vm=this;
+	
+	vm.listado = [];
+	vm.elementoActual = {};
+	vm.modo = 'list';
+	
+	var idActual = {};
+	
+	vm.load = function() {
+		dao.query().then(
+				function(rslt) { 
+					vm.listado = rslt.data;
+				},
+				function(rslt) { 
+					$log.error(rslt.statusText);
+				}
+			);
+	};
+	
+	vm.add = function() {
+		vm.modo = 'add';
+		vm.elementoActual = {};
+	};
+	
+	vm.edit = function(id) {
+		vm.modo = 'edit';
+		dao.get(id).then(
+				function(rslt) { 
+					vm.elementoActual = rslt.data;
+				},
+				function(rslt) { 
+					$log.error(rslt.statusText);
+				}
+			);
+		idActual = id;
+	};
+
+	vm.view = function(id) {
+		vm.modo = 'view';
+		dao.get(id).then(
+				function(rslt) { 
+					vm.elementoActual = rslt.data;
+				},
+				function(rslt) { 
+					$log.error(rslt.statusText);
+				}
+			);
+	};
+	
+	vm.remove = function(id) {
+		if($window.confirm("¿Seguro?")) {
+			var ind = vm.listado.findIndex(function(ele) { return ele.id === id });
+			vm.listado.splice(ind, 1);
+			dao.remove(id).then(
+					function(rslt) { 
+						vm.load();
+					},
+					function(rslt) { 
+						$log.error(rslt.statusText);
+					}
+				);
+		}
+	};
+	
+	vm.send = function() {
+		if(vm.modo == 'add') {
+			dao.add(vm.elementoActual).then(
+					function(rslt) { 
+						$location.url('personas');
+					},
+					function(rslt) { 
+						$log.error(rslt.statusText);
+					}
+				);
+		} else if(vm.modo == 'edit') {
+			dao.change(idActual, vm.elementoActual).then(
+					function(rslt) { 
+						$location.url('personas');
+					},
+					function(rslt) { 
+						$log.error(rslt.statusText);
+					}
+				);
+		} else {
+			$location.url('personas');
+		}
+	};
+	
+	vm.cancel = function() {
+		$location.url('personas');
+	};
+	
+	if(angular.isUndefined($routeParams.id)) {
+		if($location.url().endsWith("/add")) {
+			vm.add();
+		} else {
+			vm.load();
+		}
+	} else if(angular.isUndefined($routeParams.kk)) {
+		vm.edit($routeParams.id);
+	} else
+		vm.view($routeParams.id);
+
+}]);	

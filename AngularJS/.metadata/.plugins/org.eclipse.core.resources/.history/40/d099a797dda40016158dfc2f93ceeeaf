@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Curso de AngularJS</title>
+</head>
+<body>
+
+	<!-- Core del AngularJS -->
+	<script type="text/javascript" src="vendors/angular/angular.js"></script>
+	<script type="text/javascript" src="vendors/angular/i18n/angular-locale_es-es.js"></script>
+	
+	<!-- Mi código -->
+	
+</body>
+</html>

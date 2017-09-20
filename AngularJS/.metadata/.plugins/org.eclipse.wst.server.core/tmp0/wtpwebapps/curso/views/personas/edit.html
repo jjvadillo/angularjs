@@ -1,0 +1,33 @@
+<h1>Personas</h1>
+<form name="miForm">
+	<p>
+	C�digo: 
+	<span ng-bind="vm.elementoActual.id"></span>
+	<br>
+	Nombre:
+	<input type="text" name="nombre" ng-model="vm.elementoActual.nombre" 
+		required="required" ng-maxlength="10">
+	<span class="errorMsg" 
+		ng-show="miForm.nombre.$error.required || miForm.nombre.$error.maxlength" >
+		Es obligatorio con un m�ximo de 10 caracteres.</span>
+	<br>
+	Apellidos:
+	<input type="text" name="apellidos" ng-model="vm.elementoActual.apellidos" 
+		ng-maxlength="10">
+	<span class="errorMsg" 
+		ng-show="miForm.apellidos.$error.maxlength" >
+		El m�ximo de caracteres es 10.</span>
+	<br>
+	Edad:
+	<input type="number" name="edad" ng-model="vm.elementoActual.edad" 
+		min="18" max="67">
+	<span class="errorMsg" 
+		ng-show="miForm.edad.$error.min || miForm.edad.$error.max" >
+		La edad debe estar entre 18 y 67 a�os.</span>
+	</p>
+	<p>
+		<input type="button" value="Enviar" 
+			ng-disabled="miForm.$invalid" ng-click="vm.send()" >
+		<input type="button" value="Volver" ng-click="vm.cancel()" >
+	</p>
+</form>

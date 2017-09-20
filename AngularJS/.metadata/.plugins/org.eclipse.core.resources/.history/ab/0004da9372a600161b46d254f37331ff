@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" href="css/style.css">
+	<title>Curso de AngularJS</title>
+</head>
+<body ng-app="miApp" >
+
+<div ng-controller="principalCntr as vm">
+	<p>
+		<input type="button" ng-repeat="m in vm.menu" value="{{m.descripcion}}" 
+			ng-click="vm.cambiaOpcion($index)" >
+	</p>
+	<ng-include src="vm.tmplActual"></ng-include>
+</div>
+
+<script type="text/ng-template" id="templateId.html">
+	<div ng-controller="miController as vm" ng-init="vm.nombre='mundo'">
+		<h1>Hola <span ng-bind="vm.nombre"></span></h1>
+		<input type="text" data-ng-model="vm.nombre" >
+		<input type="text" value="{{vm.nombre}}" >
+		<input type="button" value="Saluda" ng-click="vm.saluda()" >
+		<input type="button" value="Despide" ng-click="vm.despide()" >
+		<input type="button" value="Di algo" ng-click="vm.di('algo')" >
+		<input type="button" value="Visualiza" ng-click="vm.cambia()" >
+		<p ng-show="vm.ver" ng-style="vm.estilo" >Resultado: {{vm.msg}}</p>
+	</div>
+	<div ng-controller="miController as vm">
+		<h1>Hola {{vm.persona.nombre + ' ' + vm.persona.apellidos}}</h1>
+		<input type="text" ng-model="vm.persona.nombre" >
+		<input type="text" ng-model="vm.persona.apellidos" >
+		<input type="button" value="Saluda" ng-click="vm.saluda()" >
+		<input type="button" value="Despide" ng-click="vm.despide()" >
+		<input type="button" value="Visualiza" ng-click="vm.cambia()" >
+		<p ng-show="vm.ver" class = "{{vm.misClasesCss}}">{{vm.msg}}</p>
+		<p ng-if="vm.ver" ng-class="vm.clasesCss">2+2={{2+2}} {{vm.calcula(2,2)}}</p>
+		<ul>
+			<li ng-repeat="p in vm.provincias" 
+				style="background-color:{{$even?'white':'yellow'}}">
+				{{$index}} {{p.nombre | capitalice}} ({{p.id}})
+			</li>
+		</ul>
+		<input type="button" value="Añadir Madrid" ng-click="vm.addProvincia()" ><br>
+		<select ng-options="p.id as p.nombre for p in vm.provincias | orderBy:'nombre'" 
+			ng-model="vm.idProvincia">
+			<option value="">--Elige opción--</option>
+		</select>
+		<p>Provincia: {{vm.idProvincia}}</p>
+	</div>
+</script>
+	
+	<!-- Core del AngularJS -->
+	<script type="text/javascript" src="vendors/angular/angular.js"></script>
+	<script type="text/javascript" src="vendors/angular/i18n/angular-locale_es-es.js"></script>
+	<script type="text/javascript" src="vendors/angular/angular-route.js"></script>
+	<script type="text/javascript" src="vendors/polyfill.js"></script>
+
+	<!-- Mi código -->
+	<script type="text/javascript" src="js/myCore.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="js/calculadora.js"></script>
+	<script type="text/javascript" src="js/personasDAO.js"></script>
+	<script type="text/javascript" src="js/servicios.js"></script>
+	
+</body>
+</html>

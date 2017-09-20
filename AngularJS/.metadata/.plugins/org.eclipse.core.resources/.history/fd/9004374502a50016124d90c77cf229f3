@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Curso de AngularJS</title>
+</head>
+<body ng-app="miApp" >
+	<div ng-controller="miController as vm" ng-init="vm.nombre='mundo'">
+		<h1>Hola <span ng-bind="vm.nombre"></span></h1>
+		<input type="text" data-ng-model="vm.nombre" >
+		<input type="text" value="{{vm.nombre}}" >
+		<input type="button" value="Saluda" ng-click="vm.saluda()" >
+		<input type="button" value="Despide" ng-click="vm.despide()" >
+		<input type="button" value="Di algo" ng-click="vm.di('algo')" >
+		<input type="button" value="Visualiza" ng-click="vm.cambia()" >
+		<p ng-show="vm.ver" ng-style="vm.estilo" >Resultado: {{vm.msg}}</p>
+	</div>
+	<div ng-controller="miController as vm">
+		<h1>Hola {{vm.persona.nombre + ' ' + vm.persona.apellidos}}</h1>
+		<input type="text" ng-model="vm.persona.nombre" >
+		<input type="text" ng-model="vm.persona.apellidos" >
+		<input type="button" value="Saluda" ng-click="vm.saluda()" >
+		<input type="button" value="Despide" ng-click="vm.despide()" >
+		<input type="button" value="Visualiza" ng-click="vm.cambia()" >
+		<p ng-show="vm.ver" class = "{{vm.misClasesCss}}">{{vm.msg}}</p>
+		<p ng-if="vm.ver" ng-class="vm.clasesCss">2+2={{2+2}} {{vm.calcula(2,2)}}</p>
+	</div>
+	
+	<!-- Core del AngularJS -->
+	<script type="text/javascript" src="vendors/angular/angular.js"></script>
+	<script type="text/javascript" src="vendors/angular/i18n/angular-locale_es-es.js"></script>
+	
+	<!-- Mi código -->
+	<script type="text/javascript" src="js/app.js"></script>
+	
+</body>
+</html>

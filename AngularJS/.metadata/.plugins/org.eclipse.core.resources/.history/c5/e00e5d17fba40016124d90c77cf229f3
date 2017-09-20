@@ -1,0 +1,25 @@
+angular.module('miApp', []);
+
+angular.module('miApp').controller("miController", [function(){
+	var vm=this;
+	
+	vm.nombre = 'MUNDO';
+	vm.msg = '';
+	vm.persona = { id: 1, nombre:"Pepito", apellidos: "Grillo", edad: 155};
+	vm.ver = true;
+	
+	vm.saluda = function() {
+		vm.msg = "Hola " + vm.nombre;
+	};
+	vm.despide = function() {
+		vm.msg = "Adios " + vm.nombre;
+	};
+	vm.di = function(algo) {
+		vm.msg = "Dice " + algo;
+	};
+	vm.cambia = function() {
+		vm.ver = !vm.ver;
+	};
+
+	vm.calcula = function(a,b) {return a+b;};
+}]);
