@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <title>Hola Mundo</title>
+        <meta name="description" content="Curso de AngularJS ACUMULADOR"
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script src="../node_modules/angular/angular.js"></script>
+        <script src="./js/appModule.js"></script>
+        <!--<script src="./js/appDirectivas.js"></script>-->
+        <script src="./js/appController.js"></script>
+        <script src="../commons/commonsModule.js"></script>      
+        <script src="../commons/appDirectivasCommon.js"></script>
+        
+    </head>
+    <body  ng-app="appModule" ng-controller="AppController as $ctrl">
+        <header>
+            <p><H1>DIRECTIVAS</H1></p>
+        </header>
+
+        <article>
+            <h2>...</h2>
+            <p>...</p>
+        </article>
+        
+        <p id="div1"></p>
+        <p id="div2"></p>
+       <!-- <div data-app-pie></div> -->
+        <app-pie autor="JJVJ directiva"></app-pie>
+
+           
+        
+    </body>
+    <ng-include src="'../commons/pie.html'"></ng-include>
+
+<script>
+    var oElement = document.querySelector('#div1');
+    oElement.innerHTML="<ul><li>hola que tal desde JS</li></ul>";
+
+    var oElementJQ =  $('#div2');
+    oElementJQ.html("<ul><li>hola que tal desde JQuery</li></ul>");
+
+    console.dir(oElement);
+    console.dir(oElementJQ);
+</script>    
+</html>
